@@ -24,6 +24,7 @@ Wordpress
 
 ## 1. Criação da VPC
 Para esse projeto criaremos uma VPC com as seguintes configurações:
+
 ![Captura de tela 2025-02-28 151626](https://github.com/user-attachments/assets/a6fe7642-1c9f-4481-933d-81492870aec6)
 ![Captura de tela 2025-03-10 100658](https://github.com/user-attachments/assets/7b7ad088-3870-4d16-8ab3-4d2017b68457)
 
