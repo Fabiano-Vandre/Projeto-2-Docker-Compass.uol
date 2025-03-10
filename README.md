@@ -17,6 +17,7 @@ aplicação Wordpress
 4. configuração do serviço de Load
 Balancer AWS para a aplicação
 Wordpress
+
 Pontos de atenção:
 não utilizar ip público para saída do
 serviços WP (Evitem publicar o serviço
