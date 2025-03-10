@@ -218,7 +218,6 @@ Para instalar o Wordpress pesquise e entre no serviço de load balancer
 - Copie o DNS name e cole no seu navegador
 - Aparecerá a seguinte tela:
 
-![wordpress](https://github.com/user-attachments/assets/aaab240e-bd07-495b-b232-10a3de7c7395)
-
+![wp](https://github.com/user-attachments/assets/b993d590-71c5-42a9-a3bb-e97416bc311d)
 
 - Após isso é só instalar a sua aplicação wordpress.
