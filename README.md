@@ -11,10 +11,10 @@ a instalação via script de Start Instance
 Wordpress com:
 container de aplicação
 RDS database Mysql
-3. configuração da utilização do serviço
+3. Configuração da utilização do serviço
 EFS AWS para estáticos do container de
 aplicação Wordpress
-4. configuração do serviço de Load
+4. Configuração do serviço de Load
 Balancer AWS para a aplicação
 Wordpress
 
@@ -31,3 +31,10 @@ Para esse projeto criaremos uma VPC com as seguintes configurações:
 O nome da VPC fica a critério do usuário da conta escolher
 
 ## 2. Criação dos Security Group
+Agora faremos a criação dos security group dos serviços com as configurações abaixo
+
+- Load Balancer SG
+| Inbound Rules  | Outbound rules |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  |
