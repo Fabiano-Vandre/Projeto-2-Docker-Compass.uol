@@ -33,7 +33,7 @@ O nome da VPC fica a critério do usuário da conta escolher
 ## 2. Criação dos Security Group
 Agora faremos a criação dos security group dos serviços com as configurações abaixo
 
-- Load Balancer SG Inbound Rules
+### Load Balancer SG Inbound Rules
 
 | Type  | Port | Source |  
 | ----- | ---- | -------- |
@@ -42,20 +42,20 @@ Agora faremos a criação dos security group dos serviços com as configuraçõe
 
 Obs: As regras de saída ou Outbound Rules deixaremos na forma padrão
 
-- EC2 SG Inbound Rules
+### EC2 SG Inbound Rules
 
 | Type  | Port | Source |  
 | ----- | ---- | -------- |
 | HTTP  | 80  | Load Balancer SG |
 | HTPS  | 443  | Load Balancer SG |
 
-- EFS SG Inbound Rules
+### EFS SG Inbound Rules
 
 | Type  | Port | Source |  
 | ----- | ---- | -------- |
 | NFS  | 2049  | EC2 SG |
 
-- RDS SG Inbound Rules
+### RDS SG Inbound Rules
 
 | Type  | Port | Source |  
 | ----- | ---- | -------- |
