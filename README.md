@@ -101,4 +101,68 @@ Pesquise pelo serviço RDS, após entrar nele clique em create database
 
 - Clique na área Additional Configuration e digite nela o nome do seu banco de dados (Que será usado para conectá-lo ao Wordpress)
 
-## 5. Criação do Launch Template
+## 5. Criação do Key pair
+Efetuaremos agora a criação de um par de chaves para maior segurança das instâncias
+- Pesquiser pelo serviço "Key pair" e clique em create key pair
+
+![oficial](https://github.com/user-attachments/assets/459ce304-dba7-49e6-ac53-1b23c7bd5f04)
+
+
+- Digite o nome do seu par de chaves
+- Em key type escolha RSA
+- Em key file format escolha a opção ".pem" e clique em create key pair
+
+## 6. Criação do Launch Template
+Agora criaremos um modelo de instância EC2, na aba de pesquisa digite Launch template, clique nele e em create launch template
+- Digite o nome do seu launch template e a descrição dele
+- Escolha o modelo "Amazon Linux Machine 2023 AMI"
+
+![ec21](https://github.com/user-attachments/assets/3803c107-c5a0-4bf0-ba97-e30372f0bce4)
+
+- Em instance type selecione a opção t2.micro
+- Em key pair selecione a chave criada anteriormente
+- Na área network settings, escolha a VPC criada para o EC2 no campo security group
+- Se você for um compasser, na área "Resource tags" coloque as tags disponibilizadas para lançamento das instâncias EC2, caso contrário você pode pular esta etapa
+- Em "Additional configuration" procure o campo user data e coloque o seguinte script:
+`#!/bin/bash
+
+sudo yum update -y
+sudo yum install -y docker
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -a -G docker ec2-user
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo yum install -y amazon-efs-utils
+sudo systemctl start amazon-efs-utils
+sudo systemctl enable amazon-efs-utils
+
+sudo mkdir /mnt/efs
+
+sudo echo "ID de seu EFS:/ /mnt/efs nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0" >> /etc/fstab
+sudo mount -a
+
+sudo mkdir /mnt/efs/wordpress
+
+
+sudo cat <<EOF > /mnt/efs/docker-compose.yaml
+version: '3.8'
+services:
+  wordpress:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: <endpoint de seu RDS>
+      WORDPRESS_DB_NAME: <nome de seu RDS>
+      WORDPRESS_DB_USER: <usuário de seu RDS>
+      WORDPRESS_DB_PASSWORD: <senha de seu RDS>
+    volumes:
+      - /mnt/efs/wordpress:/var/www/html
+EOF
+
+docker-compose -f /mnt/efs/docker-compose.yaml up -d
+`
