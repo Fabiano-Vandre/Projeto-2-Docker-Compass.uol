@@ -181,3 +181,44 @@ Pesquise pelo serviço de Load Balancer e clique em create load balancer
 - Em availability zones and subnets selecione as 2 AZs e em subnets escolha as públicas disponíveis
 - Em security group selecione o sg criado para o Load Balancer (LB SG)
 - No campo ping path digite apenas "/" como mostrado no exemplo acima e clique em create load balancer 
+
+## 8. Criação do Auto Scaling Group
+Pesquise pelo serviço de Auto Scaling Group e clique em create Auto Scaling Group
+- Digite o nome do seu Auto Scaling Group e abaixo selecione o launch template que você criou
+- Clique em Next
+
+![asg1](https://github.com/user-attachments/assets/01fe7c27-9575-4c42-bc10-e03885b3cbf5)
+
+- Em VPC selecione a VPC do projeto
+
+![asg1](https://github.com/user-attachments/assets/585e5a9a-d042-438d-a8a0-315d935b9ba7)
+
+- Em Availability zones and subnets escolha as 2 subnets privadas
+- Clique em Next
+
+![asg2v](https://github.com/user-attachments/assets/8d624805-d1da-49bf-9d70-6b4aebe2c5ba)
+
+- Em Load Balancing selecione a opção Attach to an exising Load Balancer
+- Abaixo escolha a opção Choose from Classic Load Balancer e selecione o Load Balancer criado para o projeto
+- Clique em Next
+
+![asg3](https://github.com/user-attachments/assets/7a98cdc9-1deb-4c5c-ad53-36f60e11fc7c)
+
+- Em Desired capacity digite 2 para criar 2 instâncias
+- Abaixo em "Min desired capacity" digite 2 e no campo ao lado digite 4
+- Clique em next até aparecer a opção create auto scaling group e clique nela
+
+## 9. Instalação do Wordpress
+Para instalar o Wordpress pesquise e entre no serviço de load balancer
+- Entre na lista de load balancers
+- Clique encima do nome do seu load balancer
+
+![dns](https://github.com/user-attachments/assets/23482f40-ad79-48a2-900b-2b8fcffe2ca9)
+
+- Copie o DNS name e cole no seu navegador
+- Aparecerá a seguinte tela:
+
+![wordpress](https://github.com/user-attachments/assets/aaab240e-bd07-495b-b232-10a3de7c7395)
+
+
+- Após isso é só instalar a sua aplicação wordpress.
