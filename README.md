@@ -77,7 +77,28 @@ Para criar o EFS pesquise pelo serviço EFS e após entrar nele clique em create
 
 
 - Selecione a VPC criada para o projeto e nos mount target escolha as 2 subredes privadas
+- Ainda nos mount target selecione em todos eles o security group criado para o EFS
 - Clique em next até aparecer a tela de review das configurações
 - Revise se todas as configurações estão corretas e clique em create
 
 ## 4. Criação do RDS
+Pesquise pelo serviço RDS, após entrar nele clique em create database
+- Após isso escolha a opção MySQL e em templates selecione "Free Tier"
+
+![rds1](https://github.com/user-attachments/assets/ce248109-8617-4c1a-8d1a-5308ab90a2df)
+
+
+- Escreva o identificador do seu banco de dados no campo "DB-cluster-identifier"
+- Digite uma senha no campo "Master Password"
+- Selecione o tipo de instância como ""
+
+![rds2](https://github.com/user-attachments/assets/7c8de3e2-0e16-492d-be43-7e21d88ed99a)
+
+- Na área Connectivity selecione a VPC criada para o projeto e no campo VPC Security groups selecione o Security group criado para o RDS
+
+![RDS3](https://github.com/user-attachments/assets/accb34e2-fe76-4f52-a648-5e7560c1cd5d)
+
+
+- Clique na área Additional Configuration e digite nela o nome do seu banco de dados (Que será usado para conectá-lo ao Wordpress)
+
+## 5. Criação do Launch Template
