@@ -62,3 +62,22 @@ Obs: As regras de saída ou Outbound Rules deixaremos na forma padrão
 | Type  | Port | Source |  
 | ----- | ---- | -------- |
 | MySQL/Aurora  | 3306  | EC2 SG |
+
+## 3. Criação do EFS
+Para criar o EFS pesquise pelo serviço EFS e após entrar nele clique em create file system
+- Após isso clique em customize
+- Aparecerá a seguinte tela
+
+![efs1](https://github.com/user-attachments/assets/cf016ad5-1c77-47a7-84e8-e4029ce6ab0a)
+
+
+- Escreva o nome do seu file system e clique em next
+
+![efs2](https://github.com/user-attachments/assets/900b6e36-28ca-41d1-82ca-1fd5bffe6dc4)
+
+
+- Selecione a VPC criada para o projeto e nos mount target escolha as 2 subredes privadas
+- Clique em next até aparecer a tela de review das configurações
+- Revise se todas as configurações estão corretas e clique em create
+
+## 4. Criação do RDS
