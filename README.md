@@ -124,7 +124,8 @@ Agora criaremos um modelo de instância EC2, na aba de pesquisa digite Launch te
 - Na área network settings, escolha a VPC criada para o EC2 no campo security group
 - Se você for um compasser, na área "Resource tags" coloque as tags disponibilizadas para lançamento das instâncias EC2, caso contrário você pode pular esta etapa
 - Em "Additional configuration" procure o campo user data e coloque o seguinte script:
-`#!/bin/bash
+```
+#!/bin/bash
 
 sudo yum update -y
 sudo yum install -y docker
@@ -165,4 +166,4 @@ services:
 EOF
 
 docker-compose -f /mnt/efs/docker-compose.yaml up -d
-`
+```
