@@ -1,6 +1,6 @@
 # Projeto-2-Docker-Compass.uol
-# Objetivo:
-1. instalação e configuração do DOCKER ou
+## Descrição da Atividade
+1. Instalação e configuração do DOCKER ou
 CONTAINERD no host EC2;
 SEGUIR DESENHO
 TOPOLOGIA DISPOSTA.
