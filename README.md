@@ -167,3 +167,17 @@ EOF
 
 docker-compose -f /mnt/efs/docker-compose.yaml up -d
 ```
+
+## 7. Criação do Load Balancer Classic
+Pesquise pelo serviço de Load Balancer e clique em create load balancer
+- Procure pela opção "Classic Load Balancer e clique em create"
+
+![lb1](https://github.com/user-attachments/assets/88a449bd-8187-4109-8433-3be2414b985b)
+
+![lb2](https://github.com/user-attachments/assets/5ad6b592-eb14-4e7e-b306-185b32b82c26)
+
+- Digite o nome do seu Load balancer no campo "Load Balancer Name"
+- Em Network Mapping no campo VPC selecione a VPC criada para o projeo
+- Em availability zones and subnets selecione as 2 AZs e em subnets escolha as públicas disponíveis
+- Em security group selecione o sg criado para o Load Balancer (LB SG)
+- No campo ping path digite apenas "/" como mostrado no exemplo acima e clique em create load balancer 
