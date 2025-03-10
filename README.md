@@ -34,7 +34,8 @@ O nome da VPC fica a critério do usuário da conta escolher
 Agora faremos a criação dos security group dos serviços com as configurações abaixo
 
 - Load Balancer SG
-| Inbound Rules  | Outbound rules |
+
+| First Header  | Second Header |
 | ------------- | ------------- |
 | Content Cell  | Content Cell  |
-| Content Cell  |
+| Content Cell  | Content Cell  |
