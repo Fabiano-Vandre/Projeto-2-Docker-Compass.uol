@@ -40,7 +40,9 @@ Agora faremos a criação dos security group dos serviços com as configuraçõe
 | HTTP  | 80  | 0.0.0.0/0 |
 | HTPS  | 443  | 0.0.0.0/0 |
 
+
 Obs: As regras de saída ou Outbound Rules deixaremos na forma padrão
+
 
 ### EC2 SG Inbound Rules
 
