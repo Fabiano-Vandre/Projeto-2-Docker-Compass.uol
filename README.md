@@ -18,23 +18,15 @@ aplicação Wordpress
 Balancer AWS para a aplicação
 Wordpress
 
-Pontos de atenção:
-não utilizar ip público para saída do
-serviços WP (Evitem publicar o serviço
-WP via IP Público)
-sugestão para o tráfego de internet
-sair pelo LB (Load Balancer Classic)
-pastas públicas e estáticos do
-wordpress sugestão de utilizar o
-EFS (Elastic File Sistem)
-Fica a critério de cada integrante
-usar Dockerfile ou
-Dockercompose;
-Necessário demonstrar a aplicação
-wordpress funcionando (tela de
-login)
-Aplicação Wordpress precisa estar
-rodando na porta 80 ou 8080;
-Utilizar repositório git para
-versionamento;
-Criar documentação.
+## Pré requisitos
+- Docker
+- Conta AWS
+
+## 1. Criação da VPC
+Para esse projeto criaremos uma VPC com as seguintes configurações:
+![Captura de tela 2025-02-28 151626](https://github.com/user-attachments/assets/a6fe7642-1c9f-4481-933d-81492870aec6)
+![Captura de tela 2025-03-10 100658](https://github.com/user-attachments/assets/7b7ad088-3870-4d16-8ab3-4d2017b68457)
+
+O nome da VPC fica a critério do usuário da conta escolher
+
+## 2. Criação dos Security Group
