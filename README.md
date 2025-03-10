@@ -90,7 +90,7 @@ Pesquise pelo serviço RDS, após entrar nele clique em create database
 
 - Escreva o identificador do seu banco de dados no campo "DB-cluster-identifier"
 - Digite uma senha no campo "Master Password"
-- Selecione o tipo de instância como ""
+- Selecione o tipo de instância como "db.t3.micro"
 
 ![rds2](https://github.com/user-attachments/assets/7c8de3e2-0e16-492d-be43-7e21d88ed99a)
 
