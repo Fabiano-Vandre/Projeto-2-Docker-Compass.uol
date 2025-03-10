@@ -35,7 +35,6 @@ Agora faremos a criação dos security group dos serviços com as configuraçõe
 
 - Load Balancer SG
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Type  | Port | Source |  
+| ----- | ---- | -------- |
+| HTP  | 80  | 0.0.0.0/0 |
