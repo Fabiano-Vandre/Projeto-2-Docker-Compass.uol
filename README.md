@@ -33,8 +33,30 @@ O nome da VPC fica a critério do usuário da conta escolher
 ## 2. Criação dos Security Group
 Agora faremos a criação dos security group dos serviços com as configurações abaixo
 
-- Load Balancer SG
+- Load Balancer SG Inbound Rules
 
 | Type  | Port | Source |  
 | ----- | ---- | -------- |
-| HTP  | 80  | 0.0.0.0/0 |
+| HTTP  | 80  | 0.0.0.0/0 |
+| HTPS  | 443  | 0.0.0.0/0 |
+
+Obs: As regras de saída ou Outbound Rules deixaremos na forma padrão
+
+- EC2 SG Inbound Rules
+
+| Type  | Port | Source |  
+| ----- | ---- | -------- |
+| HTTP  | 80  | Load Balancer SG |
+| HTPS  | 443  | Load Balancer SG |
+
+- EFS SG Inbound Rules
+
+| Type  | Port | Source |  
+| ----- | ---- | -------- |
+| NFS  | 2049  | EC2 SG |
+
+- RDS SG Inbound Rules
+
+| Type  | Port | Source |  
+| ----- | ---- | -------- |
+| MySQL/Aurora  | 3306  | EC2 SG |
