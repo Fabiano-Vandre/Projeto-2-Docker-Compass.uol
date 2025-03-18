@@ -38,7 +38,6 @@ Agora faremos a criação dos security group dos serviços com as configuraçõe
 | Type  | Port | Source |  
 | ----- | ---- | -------- |
 | HTTP  | 80  | 0.0.0.0/0 |
-| HTPS  | 443  | 0.0.0.0/0 |
 
 
 Obs: As regras de saída ou Outbound Rules deixaremos na forma padrão
@@ -49,7 +48,6 @@ Obs: As regras de saída ou Outbound Rules deixaremos na forma padrão
 | Type  | Port | Source |  
 | ----- | ---- | -------- |
 | HTTP  | 80  | Load Balancer SG |
-| HTPS  | 443  | Load Balancer SG |
 
 ### EFS SG Inbound Rules
 
@@ -180,9 +178,32 @@ Pesquise pelo serviço de Load Balancer e clique em create load balancer
 - Em Network Mapping no campo VPC selecione a VPC criada para o projeo
 - Em availability zones and subnets selecione as 2 AZs e em subnets escolha as públicas disponíveis
 - Em security group selecione o sg criado para o Load Balancer (LB SG)
-- No campo ping path digite apenas "/" como mostrado no exemplo acima e clique em create load balancer 
+- No campo ping path digite apenas "/wp-admin/install.php" como mostrado no exemplo acima e clique em create load balancer
 
-## 8. Criação do Auto Scaling Group
+## 8. Instalação do Wordpress
+Para instalar o Wordpress lançaremos uma instância em uma subnet pública
+- Entre na área de instâncias EC2 e clique na opção "Launch instance from template"
+- Escolha uma subnet pública
+
+
+
+- Agora vá para o load balancer e clique em edit
+
+
+
+- Selecione e adicione a instância
+- Clique encima do nome do seu load balancer
+
+![dns](https://github.com/user-attachments/assets/23482f40-ad79-48a2-900b-2b8fcffe2ca9)
+
+- Copie o DNS name e cole no seu navegador
+- Aparecerá a seguinte tela:
+
+![wp](https://github.com/user-attachments/assets/b993d590-71c5-42a9-a3bb-e97416bc311d)
+
+- Após isso é só instalar a sua aplicação wordpress.
+
+## 9. Criação do Auto Scaling Group
 Pesquise pelo serviço de Auto Scaling Group e clique em create Auto Scaling Group
 - Digite o nome do seu Auto Scaling Group e abaixo selecione o launch template que você criou
 - Clique em Next
@@ -207,17 +228,3 @@ Pesquise pelo serviço de Auto Scaling Group e clique em create Auto Scaling Gro
 - Em Desired capacity digite 2 para criar 2 instâncias
 - Abaixo em "Min desired capacity" digite 2 e no campo ao lado digite 4
 - Clique em next até aparecer a opção create auto scaling group e clique nela
-
-## 9. Instalação do Wordpress
-Para instalar o Wordpress pesquise e entre no serviço de load balancer
-- Entre na lista de load balancers
-- Clique encima do nome do seu load balancer
-
-![dns](https://github.com/user-attachments/assets/23482f40-ad79-48a2-900b-2b8fcffe2ca9)
-
-- Copie o DNS name e cole no seu navegador
-- Aparecerá a seguinte tela:
-
-![wp](https://github.com/user-attachments/assets/b993d590-71c5-42a9-a3bb-e97416bc311d)
-
-- Após isso é só instalar a sua aplicação wordpress.
