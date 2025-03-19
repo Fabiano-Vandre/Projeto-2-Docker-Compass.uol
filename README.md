@@ -211,7 +211,7 @@ Para instalar o Wordpress lançaremos uma instância em uma subnet pública
 ![manage](https://github.com/user-attachments/assets/58bda22c-be95-4407-8100-667e5889ca10)
 
 - Selecione e adicione a instância
-- Clique encima do nome do seu load balancer
+- CLique encima do nome do seu load balancer
 
 ![dns](https://github.com/user-attachments/assets/23482f40-ad79-48a2-900b-2b8fcffe2ca9)
 
