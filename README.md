@@ -183,13 +183,10 @@ Pesquise pelo serviço de Load Balancer e clique em create load balancer
 ## 8. Instalação do Wordpress
 Para instalar o Wordpress lançaremos uma instância em uma subnet pública
 - Entre na área de instâncias EC2 e clique na opção "Launch instance from template"
-- Escolha uma subnet pública
+- Escolha uma subnet pública e lance a instância
+- Agora vá para o load balancer e clique em manage instances
 
-
-
-- Agora vá para o load balancer e clique em edit
-
-
+![manage](https://github.com/user-attachments/assets/58bda22c-be95-4407-8100-667e5889ca10)
 
 - Selecione e adicione a instância
 - Clique encima do nome do seu load balancer
