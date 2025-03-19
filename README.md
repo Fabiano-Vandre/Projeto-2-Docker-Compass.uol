@@ -99,7 +99,29 @@ Pesquise pelo serviço RDS, após entrar nele clique em create database
 
 - Clique na área Additional Configuration e digite nela o nome do seu banco de dados (Que será usado para conectá-lo ao Wordpress)
 
-## 5. Criação do Key pair
+## 5. Criação do Secrets Manager
+Agora criaremos um local para guardar os dados sensíveis do RDS
+- Pesquise pelo serviço secret manager e clique em create secret
+
+![secret1](https://github.com/user-attachments/assets/5303a352-cf53-499f-87e4-b77044259e1e)
+
+- Preencha as informações do seu RDS e em "Encription Key" selecione a chave padrão do AWS
+- Selecione seu RDS e clique em next
+
+![secret2](https://github.com/user-attachments/assets/b6b0304a-0b7f-4414-a84a-c7b13e8359f1)
+
+- Digite o nome do seu Secrets e clique em next
+
+![secret3](https://github.com/user-attachments/assets/cb9aec80-f8a5-4608-8117-3729909500c4)
+
+- Para ter mais segurança clique em automatic rotation e coloque as configurações acima
+- Agora clique em create secret
+
+![secretretrive](https://github.com/user-attachments/assets/a08ee3d6-7168-4e1c-b7c4-aac993f2c72b)
+
+- Entre no seu secret e clique em retrieve secret value (Você usará esses valores no script)
+
+## 6. Criação do Key pair
 Efetuaremos agora a criação de um par de chaves para maior segurança das instâncias
 - Pesquiser pelo serviço "Key pair" e clique em create key pair
 
@@ -225,3 +247,17 @@ Pesquise pelo serviço de Auto Scaling Group e clique em create Auto Scaling Gro
 - Em Desired capacity digite 2 para criar 2 instâncias
 - Abaixo em "Min desired capacity" digite 2 e no campo ao lado digite 4
 - Clique em next até aparecer a opção create auto scaling group e clique nela
+
+## 10. Criação do Dashboards
+Para melhor visualização das requisições criaremos um dashboard
+- Pesquise pelo serviço Cloudwatch e entre na área de Dashboards
+- Clique em create dashboard
+- Escolha a opção Stacked Line
+
+![request](https://github.com/user-attachments/assets/79b3c834-6962-4c66-acca-28c397f98cad)
+
+- Selecione a opção "ELB" e "Per-LB Metrics"
+- Escolha o seu Load balancer e salve o dashboard
+
+ ## 11. Criação das ASG Policies
+ 
