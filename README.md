@@ -257,7 +257,102 @@ Para melhor visualização das requisições criaremos um dashboard
 ![request](https://github.com/user-attachments/assets/79b3c834-6962-4c66-acca-28c397f98cad)
 
 - Selecione a opção "ELB" e "Per-LB Metrics"
+- Pesquise pela opção "Request-Count" do seu LB
 - Escolha o seu Load balancer e salve o dashboard
 
  ## 11. Criação das ASG Policies
- 
+ Agora criaremos as políticas de escalabilidade do Auto Scaling group
+
+ ![scalingpolicie](https://github.com/user-attachments/assets/16f54557-c5df-4024-a43c-746d6a6a8205)
+
+- Clique no seu auto scaling group e selecione a opção "Automatic Scaling"
+- Clique em create dynamic scaling policies
+- Crie uma regra com configurações abaixo
+
+![addintance](https://github.com/user-attachments/assets/8d4bd335-f394-4ad7-89df-eff65894d008)
+
+- Para criar o alarme para adicionar instâncias clique em create alarm
+- Clique em selecionar métrica
+
+![alarm1](https://github.com/user-attachments/assets/8f65fffb-8466-4c0b-a9a8-72501b844197)
+
+- Selecione as opções "ELB" e "Per-LB Metrics"
+- Pesquise pela opção "Request-Count" do seu LB e selecione-a
+- Agora coloque as seguintes configurações abaixo
+
+![alarm1notificação](https://github.com/user-attachments/assets/50ec3968-c036-43a3-9830-972c858c4249)
+
+![alarm1regra](https://github.com/user-attachments/assets/2447ff91-bacd-4348-81f3-807e69e84464)
+
+- Clique em create alarm novamente
+- Agora criaremos o alarme para remover instâncias clique em create alarm
+- Crie um alarme com as regras abaixo
+
+![alarm2](https://github.com/user-attachments/assets/81f2cc53-a917-4072-9d6c-b1ffd87f73b8)
+
+- Clique em next
+- Nos próximos passos utilize as configurações do alarme anterior
+
+- Para criar a política de remover instâncias usaremos as seguintes configurações
+
+![removeinstancesregra](https://github.com/user-attachments/assets/4b2caf66-622b-482f-ab06-25bc73bc9167)
+
+## 12. Script para requisições
+Agora para automatizar os testes das nossas políticas usaremos o seguinte script feito em python
+
+```
+import requests
+import threading
+import time
+
+# URL do seu Load Balancer
+LOAD_BALANCER_URL = "http://URLdoSeuLoadBalancer"
+
+# Número total de requisições
+TOTAL_REQUESTS = 30
+
+# Número de threads simultâneas
+NUM_THREADS = 10
+
+def make_request():
+    """Função que faz uma requisição GET ao Load Balancer"""
+    try:
+        response = requests.get(LOAD_BALANCER_URL, timeout=5)
+        print(f"Status Code: {response.status_code}")
+    except requests.exceptions.RequestException as e:
+        print(f"Erro: {e}")
+
+def start_load_test():
+    """Cria múltiplas threads para enviar requisições simultâneas"""
+    threads = []
+    for _ in range(TOTAL_REQUESTS):
+        thread = threading.Thread(target=make_request)
+        thread.start()
+        threads.append(thread)
+
+        # Limitar a taxa de requisições
+        if len(threads) >= NUM_THREADS:
+            for t in threads:
+                t.join()  # Espera as threads terminarem
+            threads = []  # Limpa a lista para criar novas threads
+
+    # Espera todas as threads finalizarem
+    for t in threads:
+        t.join()
+
+if __name__ == "__main__":
+    print(f"Iniciando teste de carga em {LOAD_BALANCER_URL} com {TOTAL_REQUESTS} requisições.")
+    start_time = time.time()
+    
+    start_load_test()
+    
+    print(f"Teste concluído em {time.time() - start_time:.2f} segundos.")
+```
+
+Dentro do diretório do projeto execute-o com o comando:
+
+```
+python request.py
+```
+
+Caso não tenha o python instalado será necessário instalá-lo
