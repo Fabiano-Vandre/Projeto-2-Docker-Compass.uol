@@ -246,6 +246,10 @@ Pesquise pelo serviço de Auto Scaling Group e clique em create Auto Scaling Gro
 
 - Em Desired capacity digite 2 para criar 2 instâncias
 - Abaixo em "Min desired capacity" digite 2 e no campo ao lado digite 4
+
+![disponibilidade](https://github.com/user-attachments/assets/80be7828-5dc0-4329-b920-11a54c927e71)
+
+- Em instance maintenance policy escolha "Priorize Availability
 - Clique em next até aparecer a opção create auto scaling group e clique nela
 
 ## 10. Criação do Dashboards
